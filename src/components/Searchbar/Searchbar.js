@@ -16,13 +16,16 @@ export class Searchbar extends Component {
     search: '',
   };
 
-  handleInputChange = ({ target: { value } }) => {
-    this.setState({ search: value });
+  handleChange = ({ target: { value } }) => {
+    this.setState({
+      search: value,
+    });
   };
 
   handleSubmit = evt => {
     evt.preventDefault();
     this.props.onSubmit(this.state.search);
+    this.setState({ search: '' });
   };
 
   render() {
@@ -40,7 +43,7 @@ export class Searchbar extends Component {
             autoComplete="off"
             autoFocus
             value={this.state.search}
-            onChange={this.handleInputChange}
+            onChange={this.handleChange}
             placeholder="Search images and photos"
           />
         </form>
